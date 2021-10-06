@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         main_list.add(new Model(R.drawable.rohit,"Rohit","Batsman"));
         main_list.add(new Model(R.drawable.shikhar,"Shikhar","Batsman"));
         */
-        adapter=new CustomAdapter(main_list,getApplicationContext());
-        recyclerView.setAdapter(adapter);
 
     }
 
