@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -34,7 +36,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         Model model=my_list.get(position);
         holder.name.setText(model.player_name);
         holder.role.setText(model.player_role);
-        holder.image.setImageDrawable(context.getResources().getDrawable(model.getImage()));
+//        holder.image.setImageDrawable(context.getResources().getDrawable(model.getImage()));
+        Picasso.with(context).load(model.getImage()).into(holder.image);
 
     }
 
