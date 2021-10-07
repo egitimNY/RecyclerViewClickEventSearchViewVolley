@@ -1,18 +1,6 @@
 package com.halit.recyclerviewclickeventsearchviewvolley;
 
 import android.os.Bundle;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        fetchData();
-        /*
+//        fetchData();
         main_list.add(new Model(R.drawable.virat,"Virat Kohli","Batsman"));
         main_list.add(new Model(R.drawable.dhoni,"Dhoni","Wicket-keeper"));
         main_list.add(new Model(R.drawable.dinesh,"Dinesh","Wicket-keeper"));
@@ -44,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
         main_list.add(new Model(R.drawable.rahane,"Rahane","Batsman"));
         main_list.add(new Model(R.drawable.rohit,"Rohit","Batsman"));
         main_list.add(new Model(R.drawable.shikhar,"Shikhar","Batsman"));
-        */
 
+        adapter=new CustomAdapter(main_list,getApplicationContext());
+        recyclerView.setAdapter(adapter);
     }
 
+/*
 
     private void fetchData() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
@@ -61,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("playerList");
                             for (int i=0;i<jsonArray.length();i++){
                                 JSONObject object = jsonArray.getJSONObject(i);
-                                Model model=new Model(object.getString("image"),object.getString("name"),object.getString("role"));
+                                Model model=new Model(object.getInt("image"),object.getString("name"),object.getString("role"));
                                 main_list.add(model);
 
                             }
@@ -84,5 +73,6 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+*/
 
 }

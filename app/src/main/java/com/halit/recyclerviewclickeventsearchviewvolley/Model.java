@@ -1,20 +1,20 @@
 package com.halit.recyclerviewclickeventsearchviewvolley;
 
 public class Model {
-    String image;
+    int image;
     String player_name, player_role;
 
-    public Model(String image, String player_name, String player_role) {
+    public Model(int image, String player_name, String player_role) {
         this.image = image;
         this.player_name = player_name;
         this.player_role = player_role;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 
