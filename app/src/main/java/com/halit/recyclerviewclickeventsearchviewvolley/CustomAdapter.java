@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -72,6 +73,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
 
         }
+    }
+
+    public void setSearchOperation(List<Model> newList){
+        my_list=new ArrayList<>();
+        my_list.addAll(newList);
+        notifyDataSetChanged();
+
     }
 
 }

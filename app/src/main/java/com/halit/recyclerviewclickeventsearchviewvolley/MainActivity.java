@@ -1,6 +1,9 @@
 package com.halit.recyclerviewclickeventsearchviewvolley;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Model> main_list;
-    RecyclerView.Adapter adapter;
+    CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,5 +89,46 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_item,menu);
+        MenuItem menuItem = menu.findItem(R.id.search_action);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setQueryHint(getString(R.string.search));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newText=newText.toLowerCase();
+                List<Model> myList=new ArrayList<>();
+                for (Model model:main_list){
+                    String player_name=model.getPlayer_name().toLowerCase();
+                    String player_role=model.getPlayer_role().toLowerCase();
+                    String image=model.getImage().toLowerCase();
+
+                    if (player_name.contains(newText))
+                        myList.add(model);
+                    else if (player_role.contains(newText))
+                        myList.add(model);
+                    else if (image.contains(newText))
+                        myList.add(model);
+                }
+                adapter.setSearchOperation(myList);
+                return false;
+            }
+        });
+
+
+        return true;
+    }
+
 
 }

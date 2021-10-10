@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RecyclerView ClickEvent SearchView Volley</string>
+    <string name="search">Search player name</string>
 </resources>
